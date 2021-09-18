@@ -6,9 +6,8 @@ class Solution:
         for i in range(len(s)):
             curr = s[i]
             
-            if len(stack) and stack[len(stack)-1] == curr:
+            if stack and curr == stack[-1]:
                 stack.pop()
             else:
                 stack.append(curr)
-        print(stack)
         return "".join(stack)
