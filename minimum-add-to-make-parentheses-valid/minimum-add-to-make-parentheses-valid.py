@@ -1,20 +1,16 @@
 class Solution:
     def minAddToMakeValid(self, s: str) -> int:
         
-        open = 0
-        extra = 0
-        
+        open, extra = 0, 0
         
         for i in range(len(s)):
-            curr = s[i]
-            
-            if curr == "(":
+            if s[i] == "(":
                 open +=1
             else:
-                if open <=0:
+                
+                if not open:
                     extra +=1
                 else:
                     open -=1
-        
-        return open + extra
+        return open + extra 
         
