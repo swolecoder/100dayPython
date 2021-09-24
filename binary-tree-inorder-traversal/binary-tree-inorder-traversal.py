@@ -7,15 +7,19 @@
 class Solution:
     def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
         
-        res = []
+        ans = []
         
         def inorder(root):
-            nonlocal res
+            nonlocal ans
             if not root:
                 return None
+            
             inorder(root.left)
-            res.append(root.val)
+            ans.append(root.val)
             inorder(root.right)
+        
+        
         inorder(root)
         
-        return res
+        return ans
+        
