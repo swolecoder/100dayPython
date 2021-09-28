@@ -1,27 +1,27 @@
 class Solution:
     def wordBreak(self, s: str, wordDict: List[str]) -> bool:
+        memo = {}
+        
+        def dfs(s, lookup):
+            
+            if not s:
+                memo[""] = True
+                return True
+            if s in memo:
+                return memo[s]
+            
+            for i in range(len(s)):
+                newString = s[0: i+1]
+                
+                if newString in lookup:
+                    if dfs(s[i+1:], lookup):
+                        memo[s] = True
+                        return True
+            
+            memo[s] = False
+            return False
         
         
         lookup = set(wordDict)
         
-        q = []
-        
-        q.append(0)
-        
-        visited = set()
-        while q:
-            
-            index = q.pop(0)
-            if index in visited:
-                continue
-            
-            for i in range(index, len(s)+1):
-                newWord = s[index: i+1]
-                if newWord in lookup:
-                    q.append(i+1)
-                    
-                    if i +1 == len(s):
-                        return True
-                    visited.add(index)
-
-        return False
+        return dfs(s, lookup)
