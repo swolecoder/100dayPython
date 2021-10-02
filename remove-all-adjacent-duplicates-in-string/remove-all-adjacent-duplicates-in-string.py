@@ -4,6 +4,7 @@ class Solution:
         stack = []
         
         for i in range(len(s)):
+            
             curr = s[i]
             
             if stack and stack[-1] == curr:
@@ -11,7 +12,7 @@ class Solution:
             else:
                 stack.append(curr)
         
-        
         print(stack)
-        return "".join(stack)
+        
+        return ''.join(stack)
         
