@@ -1,46 +1,38 @@
-from collections import deque
 class Solution:
     def ladderLength(self, beginWord: str, endWord: str, wordList: List[str]) -> int:
         
-        lookup = set(wordList)
+        wordList.append(beginWord)
         
+        map = defaultdict(list)
+        for word in wordList:
+            
+            for j in range(len(word)):
+                pattern = word[:j] + "*" + word[j+1:]
+                map[pattern].append(word)
         
+        print(map)
         
-        if beginWord == endWord:
-            return 0
+        q = deque()
+        q.append(beginWord)
         
-        q = deque([beginWord])
+        res = 0
         visited = set()
-        visited.add(beginWord)
-        level = 0
         
         while q:
-            print(level,q)
-            for _ in range(len(q)):
-                
-                currentWord = q.popleft()
-                
-                if currentWord == endWord:
-                    return level +1
-                
-                for i in range(len(currentWord)):
-                    for j in "abcdefghijklmnopqrstuvwxyz":
-                        newWord = currentWord[:i] + j + currentWord[i+1:]
-                        
-                        if newWord in lookup and newWord not in visited:
-                            visited.add(newWord)
-                            q.append(newWord)
-                
-                
-                
-                
-            level +=1
             
+            for j in range(len(q)):
+                word = q.popleft()
+                
+                if word == endWord:
+                    return res+1
+                
+                for j in range(len(word)):
+                    pattern = word[:j] + "*" + word[j+1:]
+                    
+                    for nei in map[pattern]:
+                        if nei not in visited:
+                            visited.add(nei)
+                            q.append(nei)
             
-        return 0  
-            
-            
-            
-        
-        
-        
+            res +=1
+        return 0
