@@ -9,29 +9,22 @@ class Solution:
         """
         Do not return anything, modify root in-place instead.
         """
+        stack = [root]
+        if not root:
+            return None
         
-        def dfs(node):
-            if not node:
-                return None
-            
-            
-            left = dfs(node.left)
-            
-            right = dfs(node.right)
-            
-            
-            if node.left:
-                left.right = node.right
-                node.right = node.left
-                node.left = None
-                
-            balance = right or left or node
-            
-            return balance
         
-        dfs(root)
+        while stack:
             
+            curr = stack.pop()
             
-            
+            if curr.right:
+                stack.append(curr.right)
                 
+            if curr.left:
+                stack.append(curr.left)
+                
+            if stack:
+                curr.right = stack[-1]
+            curr.left = None
         
