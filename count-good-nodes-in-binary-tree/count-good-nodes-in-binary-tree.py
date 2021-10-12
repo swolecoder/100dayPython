@@ -7,18 +7,22 @@
 class Solution:
     def goodNodes(self, root: TreeNode) -> int:
         
-        
+        total = 0
         def dfs(node, prev):
+            nonlocal total
             if not node:
-                return 0
+                return 
             
-            res =1 if node.val >= prev else 0
-            prev = max(prev, node.val)
-            res += dfs(node.left,prev)
-            res += dfs(node.right, prev)
+            prev = max(node.val,prev)
+            cal = True if node.val >= prev else False
             
-            return res
+            if cal:
+                total +=1
+                
+            dfs(node.left,prev)
+            dfs(node.right,prev)
+            
         
-        return dfs(root,root.val)
-            
+        dfs(root, root.val)
+        return total       
         
