@@ -1,3 +1,4 @@
+[Discussion Post (created on 6/10/2021 at 12:31)](https://leetcode.com/problems/minimum-number-of-days-to-eat-n-oranges/discuss/1562979/Python-BFS-Solution)  
 <h2>1553. Minimum Number of Days to Eat N Oranges</h2><h3>Hard</h3><hr><div><p>There are <code>n</code> oranges in the kitchen and you decided to eat some of these oranges every day as follows:</p>
 
 <ul>
