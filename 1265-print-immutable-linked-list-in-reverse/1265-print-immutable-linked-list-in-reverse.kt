@@ -1,16 +1,20 @@
-# """
-# This is the ImmutableListNode's API interface.
-# You should not implement it, or speculate about its implementation.
-# """
-# class ImmutableListNode:
-#     def printValue(self) -> None: # print the value of this node.
-#     def getNext(self) -> 'ImmutableListNode': # return the next node.
+/**
+ * // This is the ImmutableListNode's API interface.
+ * // You should not implement it, or speculate about its implementation.
+ * class ImmutableListNode {
+ *     fun getNext(): ImmutableListNode? {} // return the next node.
+ *     fun printValue() {} // print the value of this node.
+ * };
+ */
 
-class Solution:
-    def printLinkedListInReverse(self, head: 'ImmutableListNode') -> None:
+class Solution {
+	fun printLinkedListInReverse(head:ImmutableListNode?) {
         
-        if head.getNext():
-            self.printLinkedListInReverse(head.getNext())
+        if (head?.getNext() != null){
+            printLinkedListInReverse(head.getNext())
+        }
         
-        return head.printValue()
+        return head!!.printValue()
         
+    }
+}
