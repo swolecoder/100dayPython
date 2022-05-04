@@ -51,7 +51,7 @@ class Solution:
         
         while q:
             
-            data= q.pop()
+            data= q.popleft()
             
             nums, d = data[0],data[1]
             print("Ashish",data)
